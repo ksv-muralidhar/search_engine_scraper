@@ -25,7 +25,7 @@ if query: #Activates the code below on hitting Enter/Return in the search textbo
                 h2 = individual_search_result.find('h2') 
                 href = h2.find('a').get('href')
                 url_txt = h2.find('a').text
-                description = individual_search_result.find('p').text
+                description = "" if individual_search_result.find('p') is None else individual_search_result.find('p').text
                 result_df = result_df.append(pd.DataFrame({"Title": url_txt, "URL": href, "Description": description}, index=[n]))
                 count_str = f'<b style="font-size:20px;">Bing Search returned {len(result_df)} results</b>'
                 result_str += f'<table style="border: none;">'+\
